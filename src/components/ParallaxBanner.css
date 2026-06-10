@@ -6,36 +6,36 @@
   overflow: hidden;
 }
 
-/* Background image layer — moves at different speed to create parallax */
+/* Background image — fixed inside the sticky wrapper */
 .parallax__bg {
   position: absolute;
-  inset: -80px 0;
-  background-image: url('/parallax-bg.jpg');
+  inset: 0;
   background-size: cover;
   background-position: center;
   background-color: #0a1628;
-  will-change: transform;
-  transition: transform 0.05s linear;
 }
 
-/* Dark gradient overlay — two-layer for depth */
+/* Two-layer overlay: deep navy + blue tint */
 .parallax__overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg, rgba(10, 22, 40, 0.92) 0%, rgba(26, 86, 219, 0.55) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(10, 22, 40, 0.93) 0%,
+    rgba(26, 86, 219, 0.6) 100%
+  );
   z-index: 1;
 }
 
-/* Grid line texture on top of overlay */
+/* Subtle grid line texture */
 .parallax__overlay::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
 /* Content */
@@ -46,7 +46,6 @@
   max-width: 1080px;
   margin: 0 auto;
   padding: 80px 5%;
-  color: #ffffff;
 }
 
 .parallax__eyebrow {
@@ -63,7 +62,7 @@
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -1px;
-  color: #ffffff;
+  color: #f1f5f9;
   margin-bottom: 1.4rem;
 }
 
@@ -74,9 +73,10 @@
 .parallax__sub {
   font-size: 1rem;
   line-height: 1.8;
-  color: #94a3b8;
+  color: #f1f5f9;
   max-width: 560px;
   margin-bottom: 3rem;
+  opacity: 0.85;
 }
 
 /* Stats row */
@@ -85,7 +85,7 @@
   gap: 3rem;
   flex-wrap: wrap;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .parallax__stat {
@@ -103,9 +103,10 @@
 
 .parallax__stat-lbl {
   font-size: 0.78rem;
-  color: #64748b;
+  color: #f1f5f9;
   max-width: 140px;
   line-height: 1.4;
+  opacity: 0.75;
 }
 
 @media (max-width: 640px) {

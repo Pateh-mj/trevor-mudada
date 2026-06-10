@@ -29,8 +29,28 @@ body {
   min-height: 100vh;
 }
 
+/* Sticky parallax wrapper — stays fixed while sections slide over it */
+.sticky-parallax {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 0;
+}
+
+/* All content sections sit above the sticky parallax */
 .section {
+  position: relative;
+  z-index: 1;
   padding: 96px 5%;
+  background: var(--white);
+  /* Reveal from bottom — initial state */
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.7s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section--alt {

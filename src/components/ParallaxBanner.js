@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import './ParallaxBanner.css';
 
 const highlights = [
@@ -9,22 +8,12 @@ const highlights = [
 ];
 
 export default function ParallaxBanner() {
-  const bgRef = useRef(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!bgRef.current) return;
-      const rect = bgRef.current.parentElement.getBoundingClientRect();
-      const ratio = -rect.top / window.innerHeight;
-      bgRef.current.style.transform = `translateY(${ratio * 80}px)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <div className="parallax">
-      <div className="parallax__bg" ref={bgRef} />
+      <div
+        className="parallax__bg"
+        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/parallax-bg.jpg)` }}
+      />
       <div className="parallax__overlay" />
 
       <div className="parallax__content">

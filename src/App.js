@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +14,20 @@ import Footer from './components/Footer';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('is-revealed');
+        });
+      },
+      { threshold: 0.08 }
+    );
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="app">
       <Header />
@@ -21,7 +36,9 @@ function App() {
         <About />
         <Experience />
         <Research />
-        <ParallaxBanner />
+        <div className="sticky-parallax">
+          <ParallaxBanner />
+        </div>
         <Skills />
         <Projects />
         <Training />
